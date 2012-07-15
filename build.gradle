@@ -1,0 +1,35 @@
+apply plugin:"scala"
+
+version = 1.0
+
+task wrapper(type: Wrapper) {
+    gradleVersion = version
+}
+
+sourceSets {
+	main {
+		scala {
+			srcDir 'src'
+    	}
+	}
+	test {
+		scala {
+			srcDir 'test'
+    	}
+  	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	scalaTools  (
+		[group: "org.scala-lang", name: "scala-compiler",version: "2.9.2"],
+		[group: "org.scala-lang", name: "scala-library",version: "2.9.2"]
+	)
+	
+	compile (
+		[group: "org.scala-lang", name: "scala-library",version: "2.9.2"]
+	)
+}
